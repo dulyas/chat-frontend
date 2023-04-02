@@ -8,27 +8,26 @@ const MainPage: FC = () => {
 
 
     return (
-        <div>
+        <div className={style.main}>
+           <div className={style.content}>
             <h1 className={style.title}>
-                Get Closer To<br/> EveryOne
-                </h1>
-            <h2 className={style.subtitle}>
-                Helps you to contact everyone with<br/>just easy way
-            </h2>
-            <div className={style.image}>
-                <img src={peoples} alt="peoples" />
-            </div>
-            <div className={style.progress}>
-                <ProgressLogo />
-            </div>
-            <div className={style.buttons}>
-                <div className={style.button}>
-                    <Button text="Login" click='/login'/>
+                    Get Closer To<br/> EveryOne
+                    </h1>
+                <h2 className={style.subtitle}>
+                    Helps you to contact everyone with<br/>just easy way
+                </h2>
+                <div className={style.image}>
+                    <img src={peoples} alt="peoples" />
                 </div>
-                <div className={style.button}>
-                    <Button text="Login" click='/login'/>
+                {/* <div className={style.progress}>
+                    <ProgressLogo />
+                </div> */}
+                <div className={style.buttons}>
+                    <div className={style.button}>
+                        <Button text="Get Started" click='/login'/>
+                    </div>
                 </div>
-            </div>
+           </div>
         </div>
     );
 };
