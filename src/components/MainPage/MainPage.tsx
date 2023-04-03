@@ -3,8 +3,14 @@ import style from './mainPage.module.scss'
 import peoples from './peoples.png'
 import ProgressLogo from './progress.svg'
 import Button from '../Button/Button';
+import { Context } from '../../main';
+import { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 
 const MainPage: FC = () => {
+
+    const {store} = useContext(Context)
+    
 
 
     return (
@@ -24,7 +30,7 @@ const MainPage: FC = () => {
                 </div> */}
                 <div className={style.buttons}>
                     <div className={style.button}>
-                        <Button text="Get Started" click='/login'/>
+                        <Button text="Get Started" click={store.isAuth ? 'chat' : '/login'}/>
                     </div>
                 </div>
            </div>
@@ -32,4 +38,4 @@ const MainPage: FC = () => {
     );
 };
 
-export default MainPage;
+export default observer(MainPage);

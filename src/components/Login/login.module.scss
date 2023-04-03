@@ -61,9 +61,16 @@
         font-size: 13px;
         line-height: 20px;
     }
-    .button {
+    .buttons {
         margin-block-start: 42px;
+        .button {
+            &:not(:first-child) {
+                margin-block-start: 10px;
+            }
+           
+        }
     }
+
     .image {
         position: absolute;
         height: 229px;
