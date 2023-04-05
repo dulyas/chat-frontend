@@ -5,8 +5,11 @@ import {
   RouterProvider,
   redirect
 } from "react-router-dom";
+
 import Login from './components/Login/Login';
 import MainPage from './components/MainPage/MainPage';
+import Chat from './components/Chat/Chat';
+
 import { observer } from 'mobx-react-lite'
 import { useContext, useState, useEffect } from 'react';
 import { Context } from './main'
@@ -25,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat",
-    element: <div>CHAT</div>,
+    element: <Chat />,
   },
 ]);
 
@@ -65,4 +68,4 @@ function App() {
 
 }
 
-export default observer(App)
+export default App
