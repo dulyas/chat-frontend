@@ -1,0 +1,82 @@
+.wrap {
+    padding: 0 22px;
+    width: 100%;
+    .home {
+
+        width: 100%;
+    
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-block-start: 36px;
+            height: 39px;
+            width: 100%;
+            overflow: hidden;
+    
+            .left {
+                height: 100%;
+                // width: 100%;
+                background: #F1F1F1;
+                border-radius: 14px;
+                display: flex;
+                align-items: center;
+    
+                flex-shrink: 1;
+                flex-grow: 0;
+                padding: 7px 14px;
+                .loop {
+                    width: 24px;
+                    height: 24px;
+                    background: red;
+    
+                }
+                svg {
+    
+                    width: 24px;
+                    height: 24px;
+    
+                }
+    
+                input {
+                    padding: 0;
+                    flex-shrink: 12;
+                    display: block;
+                    padding: 0 0 0 11px;
+                    // margin-inline-start: 11px;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 30px;
+                    color: #252525;
+                    width: 100%;
+                    &:focus {
+                        background: none;
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            .right {
+                margin-inline-start: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                background: #F1F1F1;
+                border-radius: 10px;
+                width: 44px;
+                height: 100%;
+                background: blue;
+                flex-shrink: 0;
+                flex-grow: 0;
+                // flex-shrink: 0;
+            }
+        }
+    
+    
+    }
+}
+

@@ -1,5 +1,5 @@
 
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { Tab } from "../../Chat";
 import style from './footer.module.scss'
 
@@ -11,6 +11,9 @@ interface FooterProps {
 
 
 const Footer :FC<FooterProps> = ({tabs, onClickTab, currentTab}) => {
+
+
+
     return (
         <div className={style.footer}>
             {tabs.map(tab => 
