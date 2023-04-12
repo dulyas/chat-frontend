@@ -6,37 +6,68 @@ import SearchBtn from './svg/search-btn.svg'
 import Friends from "./components/Friends/Friends";
 import Chats from './components/Chats/Chats'
 
+
+interface Tab {
+    title: string
+    code: string
+}
+
+interface TabsComponents {
+    [code:string]: FC
+}
+
+const tabs: Tab[] = [
+    {
+        title: 'Chats',
+        code: 'chats',
+    },
+    {
+        title: 'Friends',
+        code: 'friends',
+    },
+]
+
+const tabsComponents: TabsComponents = {
+    chats: Chats,
+    friends: Friends
+}
+
+
 const Home: FC = () => {
 
-    const [tab, setTab] = useState<string>('chats')
 
-
+    const [currentTab, setCurrentTab] = useState<string>('chats')
+    const TabComponent: FC = tabsComponents[currentTab]
 
     return (
         <div className={style.wrap}>
             <div className={style.home}>
                 <div className={style.search}>
                     <div className={style.left}>
-                        {/* <Loop /> */}
+                       
                         <div className={style.loop}>
-
+                            <Loop />
                         </div>
                         <input type="text" />
                     </div>
                     <div className={style.right}>
     
-                        {/* <SearchBtn /> */}
+                        <SearchBtn />
                     </div>
                 </div>
-                <div>
-                    <div>
-                        Chats
-                    </div>
-                    <div>
-                        Friends
-                    </div>
+                <div className={style.tabs}>
+                    {tabs.map(tab => 
+                        <div 
+                        className={style.tab + (tab.code === currentTab ? (' ' + style.active) : '')}
+                        onClick={() => setCurrentTab(tab.code)}
+                        key={tab.code}>
+                            {tab.title}
+                        </div>
+                    )}
                 </div>
-                {tab === 'friends' ? <Friends /> : <Chats />}
+                <div className={style.tab_component}>
+                    <TabComponent />
+                </div>
             </div>
         </div>
     );

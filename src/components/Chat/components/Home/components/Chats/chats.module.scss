@@ -1,0 +1,52 @@
+.chats {
+    height: 100%;
+    overflow: auto;
+    padding-inline-end: 10px;
+    .chat {
+        position: relative;
+        border: 2px solid #771F98;
+        border-radius: 14px;
+        padding: 9px 17px;
+        display: flex;
+        align-items: center;
+        height: 68px;
+        overflow: hidden;
+        &:not(:first-child) {
+            margin-block-start: 32px;
+        }
+
+        .left {
+            height: 100%;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .right {
+            margin-inline-start: 13px;
+            height: 100%;
+            width: 70%;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #181818;
+        }
+        .message {
+            margin-block-start: 6px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 400;
+            font-size: 13px;
+            white-space: nowrap;
+            line-height: 20px;
+        }
+    }
+}

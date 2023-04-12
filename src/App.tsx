@@ -46,7 +46,10 @@ function App() {
   useEffect(() => {
     checkAuth()
   }, [])
-  
+
+
+
+
   if (isMobile) {
 
     if (store.isLoadingCheckAuth) {

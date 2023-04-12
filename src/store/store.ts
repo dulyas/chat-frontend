@@ -4,6 +4,147 @@ import axios from "axios";
 import { IUser } from "../models/IUser";
 import { makeAutoObservable } from "mobx";
 import AuthService from "../service/AuthService";
+import { IChat } from '../models/IChat';
+
+const chats = [
+    {
+        id: '1',
+        name: 'Sanya',
+        usersIds: ['12345', '321312'],
+        avatarUrl: './images/ava1.png',
+        lastMessage: {
+            userId: '321312',
+            receiverId: '12345',
+            readed: true,
+            edited: false,
+            date: new Date(),
+            textMessage: 'hello'
+        },
+        unreadMessageCount: 1
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    {
+        id: '2',
+        name: 'Sanya2',
+        usersIds: ['32222', '12345'],
+        avatarUrl: './images/ava2.png',
+        lastMessage: {
+            userId: '32222',
+            receiverId: '12345',
+            readed: false,
+            edited: true,
+            date: new Date(),
+            textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
+        },
+        unreadMessageCount: 322
+    },
+    
+]
 
 
 export default class Store {
@@ -15,6 +156,8 @@ export default class Store {
     constructor() {
         makeAutoObservable(this)
     }
+
+
 
     setLoading(status: boolean) {
         this.isLoading = status
@@ -29,7 +172,10 @@ export default class Store {
     }
 
     setUser(user: IUser) {
-        this.user = user
+        this.user = {
+            ...user,
+            chats
+        }
     }
 
     async login(email: string, password: string) {

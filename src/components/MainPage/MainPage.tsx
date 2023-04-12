@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import style from './mainPage.module.scss'
 import peoples from './peoples.png'
 import ProgressLogo from './progress.svg'
