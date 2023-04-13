@@ -39,7 +39,7 @@ const tabsComponents: TabComponent = {
     settings: Settings
 }
 
-const Chat = () => {
+const ChatApp: FC = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [currentTab, setCurrentTab] = useState<string>(searchParams.get('tab') ?? 'home')
@@ -67,4 +67,4 @@ const Chat = () => {
     );
 };
 
-export default Chat;
+export default ChatApp;

@@ -8,7 +8,7 @@ import {
 
 import Login from './components/Login/Login';
 import MainPage from './components/MainPage/MainPage';
-import Chat from './components/Chat/Chat';
+import ChatApp from './components/Chat/ChatApp';
 
 import { observer } from 'mobx-react-lite'
 import { useContext, useState, useEffect } from 'react';
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat",
-    element: <Chat />,
+    element: <ChatApp />,
   },
 ]);
 

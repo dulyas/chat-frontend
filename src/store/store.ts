@@ -10,14 +10,14 @@ const chats = [
     {
         id: '1',
         name: 'Sanya',
-        usersIds: ['12345', '321312'],
+        usersIds: ['12345', "642b003ebc8eea4eb5fc43e0"],
         avatarUrl: './images/ava1.png',
         lastMessage: {
-            userId: '321312',
+            userId: "642b003ebc8eea4eb5fc43e0",
             receiverId: '12345',
             readed: true,
             edited: false,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello'
         },
         unreadMessageCount: 1
@@ -25,20 +25,20 @@ const chats = [
     {
         id: '2',
         name: 'Sanya2',
-        usersIds: ['32222', '12345'],
+        usersIds: ["642b003ebc8eea4eb5fc43e0", '12345'],
         avatarUrl: './images/ava2.png',
         lastMessage: {
-            userId: '32222',
+            userId: "642b003ebc8eea4eb5fc43e0",
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '4',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -47,13 +47,13 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '3',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -62,13 +62,13 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '5',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -77,14 +77,14 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
 
     {
-        id: '2',
+        id: '6',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -93,13 +93,13 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '7',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -108,13 +108,13 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '8',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -123,13 +123,13 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
     },
     {
-        id: '2',
+        id: '9',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
         avatarUrl: './images/ava2.png',
@@ -138,7 +138,7 @@ const chats = [
             receiverId: '12345',
             readed: false,
             edited: true,
-            date: new Date(),
+            date: Date.now(),
             textMessage: 'hello retardSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'
         },
         unreadMessageCount: 322
@@ -185,6 +185,7 @@ export default class Store {
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)
+
         } catch (error: any) {
             console.log(error.response?.data?.message || error)
         }
