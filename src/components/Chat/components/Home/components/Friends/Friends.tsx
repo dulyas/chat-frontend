@@ -3,8 +3,9 @@ import { Context } from "../../../../../../main";
 import { observer } from 'mobx-react-lite'
 import style from './friends.module.scss'
 import Friend from "./components/Friend/Friend";
+import { TabComponentProps } from "../../Home";
 
-const Friends: FC = () => {
+const Friends: FC<TabComponentProps> = ({searchString}) => {
 
     const {store} = useContext(Context)
 

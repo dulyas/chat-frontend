@@ -4,9 +4,13 @@ import { useContext, FC } from 'react';
 import { Context } from '../../../../../../main';
 import style from './chats.module.scss'
 import ChatElement from './components/Chat/ChatElement';
+import { TabComponentProps } from '../../Home';
 
-const Chats: FC = () => {
 
+const Chats: FC<TabComponentProps> = ({searchString}) => {
+
+    console.log(searchString)
+    
     const {store} = useContext(Context)
     if (store?.user?.chats?.length) {
         return (
