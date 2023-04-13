@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { IChat } from "../../../../../../../models/IChat";
+import { IChat } from "../../../../../../../../models/IChat";
 import style from './chat.module.scss'
-import Ok from '../ok.svg'
+import Ok from './ok.svg'
 
 interface ChatElementProps {
     chat: IChat,

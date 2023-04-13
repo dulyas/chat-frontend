@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useContext, FC } from 'react';
 import { Context } from '../../../../../../main';
 import style from './chats.module.scss'
-import ChatElement from './components/ChatElement';
+import ChatElement from './components/Chat/ChatElement';
 
 const Chats: FC = () => {
 

@@ -1,0 +1,33 @@
+.friend {
+    position: relative;
+    border: 2px solid #771F98;
+    border-radius: 14px;
+    padding: 9px 17px;
+    display: flex;
+    align-items: center;
+    height: 68px;
+    overflow: hidden;
+    width: 100%;
+    &:not(:first-child) {
+        margin-block-start: 32px;
+    }
+    .avatar {
+        width: 50px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 auto; 
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .name {
+        margin-inline-start: 15px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: #181818;
+    }
+}

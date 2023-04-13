@@ -25,11 +25,11 @@ const chats = [
     {
         id: '2',
         name: 'Sanya2',
-        usersIds: ["642b003ebc8eea4eb5fc43e0", '12345'],
+        usersIds: ["642b003ebc8eea4eb5fc43e0", '123456'],
         avatarUrl: './images/ava2.png',
         lastMessage: {
             userId: "642b003ebc8eea4eb5fc43e0",
-            receiverId: '12345',
+            receiverId: '123456',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -146,6 +146,20 @@ const chats = [
     
 ]
 
+const friends = {
+    '12345': {
+        id: '12345',
+        name: "Sanya",
+        avatarUrl: './images/ava1.png',
+        isOnline: true
+    },
+    '123456': {
+        id: '123456',
+        name: "Sanya2",
+        avatarUrl: './images/ava2.png',
+        isOnline: true
+    }
+}
 
 export default class Store {
     user = {} as IUser
@@ -174,7 +188,8 @@ export default class Store {
     setUser(user: IUser) {
         this.user = {
             ...user,
-            chats
+            chats,
+            friends
         }
     }
 

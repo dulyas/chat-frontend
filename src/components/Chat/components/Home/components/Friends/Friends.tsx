@@ -1,15 +1,28 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { Context } from "../../../../../../main";
+import { observer } from 'mobx-react-lite'
+import style from './friends.module.scss'
+import Friend from "./components/Friend/Friend";
 
-interface FriendsProps {
+const Friends: FC = () => {
 
-}
+    const {store} = useContext(Context)
 
-const Friends: FC = ({friends}) => {
+    if (store.user.friends && Object.keys(store.user.friends).length) {
+        return (
+            <div className={style.friends}>
+                {Object.values(store.user.friends).map(friend => 
+                    <Friend key={friend.id} avatarUrl={friend.avatarUrl} name={friend.name} isOnline={friend.isOnline}/>
+                )}
+            </div>
+        );
+    }
+
     return (
         <div>
-            Friends
+            There is no friends, add somebody!
         </div>
-    );
+    )
 };
 
-export default Friends;
+export default observer(Friends);
