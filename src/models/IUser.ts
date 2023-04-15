@@ -2,9 +2,11 @@ import { IChat } from "./IChat"
 import { IFriend } from "./IFriend"
 
 export interface IUser {
+    id: string
+    name: string
     email: string
     isActivated: boolean
-    id: string
+    avatarUrl: string
     chats: IChat[]
     friends: IFriend
 }

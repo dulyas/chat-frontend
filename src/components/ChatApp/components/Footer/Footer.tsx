@@ -12,7 +12,7 @@ interface FooterProps {
 
 const Footer :FC<FooterProps> = ({tabs, onClickTab, currentTab}) => {
 
-
+    // console.log('footer render')
 
     return (
         <div className={style.footer}>

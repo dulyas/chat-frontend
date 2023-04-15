@@ -2,7 +2,7 @@ import { API_URL } from './../http/index';
 import { AuthResponse } from './../models/response/AuthResponse';
 import axios from "axios";
 import { IUser } from "../models/IUser";
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable, makeObservable, observable } from "mobx";
 import AuthService from "../service/AuthService";
 import { IChat } from '../models/IChat';
 
@@ -11,10 +11,10 @@ const chats = [
         id: '1',
         name: 'Sanya',
         usersIds: ['12345', "642b003ebc8eea4eb5fc43e0"],
-        avatarUrl: './images/ava1.png',
+        avatarUrl: '/images/ava1.png',
         lastMessage: {
             userId: "642b003ebc8eea4eb5fc43e0",
-            receiverId: '12345',
+            roomId: '12345',
             readed: true,
             edited: false,
             date: Date.now(),
@@ -26,10 +26,10 @@ const chats = [
         id: '2',
         name: 'Sanya2',
         usersIds: ["642b003ebc8eea4eb5fc43e0", '123456'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: "642b003ebc8eea4eb5fc43e0",
-            receiverId: '123456',
+            roomId: '123456',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -41,10 +41,10 @@ const chats = [
         id: '4',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -56,10 +56,10 @@ const chats = [
         id: '3',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -71,10 +71,10 @@ const chats = [
         id: '5',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -87,10 +87,10 @@ const chats = [
         id: '6',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -102,10 +102,10 @@ const chats = [
         id: '7',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -117,10 +117,10 @@ const chats = [
         id: '8',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -132,10 +132,10 @@ const chats = [
         id: '9',
         name: 'Sanya2',
         usersIds: ['32222', '12345'],
-        avatarUrl: './images/ava2.png',
+        avatarUrl: '/images/ava2.png',
         lastMessage: {
             userId: '32222',
-            receiverId: '12345',
+            roomId: '12345',
             readed: false,
             edited: true,
             date: Date.now(),
@@ -150,25 +150,39 @@ const friends = {
     '12345': {
         id: '12345',
         name: "Sanya",
-        avatarUrl: './images/ava1.png',
-        isOnline: true
+        avatarUrl: '/images/ava1.png',
+        isOnline: false,
+        roomId: '1'
     },
     '123456': {
         id: '123456',
         name: "Sanya2",
-        avatarUrl: './images/ava2.png',
-        isOnline: true
+        avatarUrl: '/images/ava2.png',
+        isOnline: true,
+        roomId: '2'
     }
 }
+
+
 
 export default class Store {
     user = {} as IUser
     isAuth = false
-    isLoading = false
-    isLoadingCheckAuth = false
+    isLoading = true
+
 
     constructor() {
-        makeAutoObservable(this)
+        // makeAutoObservable(this)
+        makeObservable(this, {
+            isLoading: observable,
+            user: observable,
+            setLoading: action,
+            setAuth: action,
+            setUser: action,
+            login: action,
+            logout: action,
+            registration: action
+        })
     }
 
 
@@ -177,9 +191,6 @@ export default class Store {
         this.isLoading = status
     }
 
-    setLoadingCheckAuth(status: boolean) {
-        this.isLoadingCheckAuth = status
-    }
 
     setAuth(status: boolean) {
         this.isAuth = status
@@ -231,7 +242,7 @@ export default class Store {
 
     async checkAuth() {
         try {
-            this.setLoadingCheckAuth(true)
+            // this.setLoading(true)
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
@@ -240,7 +251,7 @@ export default class Store {
         } catch (error: any) {
             console.log(error.response?.data?.message || error)
         } finally {
-            this.setLoadingCheckAuth(false)
+            this.setLoading(false)
         }
     }
 

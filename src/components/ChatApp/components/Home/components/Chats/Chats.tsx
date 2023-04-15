@@ -9,7 +9,7 @@ import { TabComponentProps } from '../../Home';
 
 const Chats: FC<TabComponentProps> = ({searchString}) => {
 
-    console.log(searchString)
+
     
     const {store} = useContext(Context)
     if (store?.user?.chats?.length) {

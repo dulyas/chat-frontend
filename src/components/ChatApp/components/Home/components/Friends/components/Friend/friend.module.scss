@@ -5,9 +5,11 @@
     padding: 9px 17px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 68px;
     overflow: hidden;
     width: 100%;
+    
     &:not(:first-child) {
         margin-block-start: 32px;
     }
@@ -29,5 +31,34 @@
         font-size: 16px;
         line-height: 24px;
         color: #181818;
+        position: relative;
+        &::after {
+            content: '';
+            width: 66px;
+            border: 2px solid #F1F1F1;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+        }
+        &.online {
+            color: #771F98;
+            &::after {
+                content: '';
+                border: 2px solid #7fbd4c9c;
+
+            }
+        }
+    }
+    .message {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        svg {
+            width: 30px;
+            height: 30px;
+            path {
+                fill: #771F98;
+            }
+        }
     }
 }

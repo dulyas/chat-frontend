@@ -13,7 +13,7 @@ interface Tab {
 }
 
 interface TabsComponents {
-    [code:string]: FC
+    [code:string]: FC<TabComponentProps>
 }
 
 const tabs: Tab[] = [

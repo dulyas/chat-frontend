@@ -4,10 +4,11 @@ import { FC, useEffect, useState } from 'react';
 import style from './chat.module.scss'
 import svg from './svg'
 import { useSearchParams } from "react-router-dom";
-
 import Home from './components/Home/Home';
 import AddFriends from './components/AddFriends/AddFriends';
 import Settings from './components/Settings/Settings';
+
+
 
 export interface Tab {
     svg: string
@@ -45,9 +46,9 @@ const ChatApp: FC = () => {
     const [currentTab, setCurrentTab] = useState<string>(searchParams.get('tab') ?? 'home')
     
 
-    useEffect(() => {
-        if (!searchParams.get('tab')) setSearchParams({tab: 'home'})
-    }, [])
+    // useEffect(() => {
+    //     if (!searchParams.get('tab')) setSearchParams({tab: 'home'})
+    // }, [])
     
 
     const onClickTab = (tab: string): void => {

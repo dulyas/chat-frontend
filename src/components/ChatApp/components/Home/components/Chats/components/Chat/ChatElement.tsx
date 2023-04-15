@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { IChat } from "../../../../../../../../models/IChat";
 import style from './chat.module.scss'
 import Ok from './ok.svg'
@@ -9,6 +9,7 @@ interface ChatElementProps {
 }
 
 const ChatElement: FC<ChatElementProps> = ({chat, userId}) => {
+    // console.log('render chat elem')
     return (
         <div 
         className={style.chat}
@@ -34,4 +35,4 @@ const ChatElement: FC<ChatElementProps> = ({chat, userId}) => {
     );
 };
 
-export default ChatElement;
+export default memo(ChatElement);

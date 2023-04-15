@@ -1,6 +1,6 @@
 export interface IMessage {
     userId: string
-    receiverId: string
+    roomId: string
     readed: boolean
     edited: boolean
     date: Date | number
