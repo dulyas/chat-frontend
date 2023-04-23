@@ -23,11 +23,11 @@ const AddFriends: FC = () => {
 
     const input = useRef<HTMLInputElement | null>(null)
 
-    let inputSearchValue = ''
+
 
     const [searchString, setSearchString] = useState<string>('')
     
-    console.log('render')
+
 
     return (
         <div className={style.wrap}>
@@ -43,7 +43,9 @@ const AddFriends: FC = () => {
                         type="text" />
                     </div>
                     <div 
-                    onClick={() => setSearchString(input.current?.value)}
+                    onClick={() => {
+                        setSearchString(input?.current?.value)
+                    }}
                     className={style.right}>
                         <SearchBtn />
                     </div>

@@ -229,9 +229,9 @@ export default class Store {
         }
     }
 
-    async logout() {
+    async logout(email: string) {
         try {
-            const response = await AuthService.logout
+            const response = await AuthService.logout(email)
             localStorage.removeItem('token')
             this.setAuth(false)
             this.setUser({} as IUser)
@@ -243,7 +243,7 @@ export default class Store {
     async checkAuth() {
         try {
             // this.setLoading(true)
-            const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials: true})
+            const response = await axios.get<AuthResponse>(`${API_URL}/user/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)

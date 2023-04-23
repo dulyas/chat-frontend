@@ -2,7 +2,7 @@ import { IMessage } from "./IMessage"
 
 
 export interface IChat {
-    id: string | number
+    id: string
     name: string
     usersIds: string[]
     avatarUrl: string

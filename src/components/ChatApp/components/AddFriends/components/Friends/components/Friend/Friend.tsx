@@ -1,18 +1,19 @@
 import { FC, memo } from "react";
 import style from './friend.module.scss'
 import MessageIcon from './message.svg'
-import { useNavigate } from "react-router-dom";
+
 
 interface FriendProps {
     avatarUrl: string
     name: string
     isOnline: boolean
-    roomId: string
+    id: string
+    addFunction: (id: string) => Promise<void>
 }
 
-const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, roomId}) => {
+const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, id, addFunction}) => {
 
-    const navigate = useNavigate()
+
 
     return (
         <div className={style.friend} >
@@ -22,8 +23,8 @@ const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, roomId}) => {
             <div className={style.name + (isOnline ? (' ' + style.online) : '')}>
                 {name}
             </div>
-            <div onClick={() => navigate(`/chat/${roomId}`)} className={style.message}>
-                <MessageIcon />
+            <div onClick={() => addFunction(id)} className={style.message}>
+                +
             </div>
         </div>
     );
