@@ -5,6 +5,8 @@ import { IUser } from "../models/IUser";
 import { action, makeAutoObservable, makeObservable, observable } from "mobx";
 import AuthService from "../service/AuthService";
 import { IChat } from '../models/IChat';
+import UserService from '../service/UserService';
+import { IFriend } from '../models/IFriend';
 
 const chats = [
     {
@@ -196,7 +198,24 @@ export default class Store {
         this.isAuth = status
     }
 
-    setUser(user: IUser) {
+    async setUser(user: IUser) {
+
+        const friendsArr: IUser[] = (await UserService.getFriendListFromId(user.id)).data
+
+        const friends: IFriend = {}
+
+        for (const key in friendsArr) {
+            friends[friendsArr[key].id] = {
+                id: friendsArr[key].id,
+                name: friendsArr[key].name,
+                avatarUrl: friendsArr[key].avatarUrl,
+                isOnline: friendsArr[key].isOnline ?? true,
+                roomId: ''
+            }
+        }
+
+        console.log(friends)
+
         this.user = {
             ...user,
             chats,
@@ -207,10 +226,9 @@ export default class Store {
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password)
-            console.log(response)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user)
+            await this.setUser(response.data.user)
 
         } catch (error: any) {
             console.log(error.response?.data?.message || error)
@@ -220,10 +238,9 @@ export default class Store {
     async registration(email: string, password: string) {
         try {
             const response = await AuthService.registration(email, password)
-            console.log(response)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user)
+            await this.setUser(response.data.user)
         } catch (error: any) {
             console.log(error.response?.data?.message || error)
         }
@@ -246,7 +263,7 @@ export default class Store {
             const response = await axios.get<AuthResponse>(`${API_URL}/user/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
-            this.setUser(response.data.user)
+            await this.setUser(response.data.user)
 
         } catch (error: any) {
             console.log(error.response?.data?.message || error)

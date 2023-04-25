@@ -15,4 +15,8 @@ export default class UserService {
     static addFriend(userId: string, friendId: string): Promise<AxiosResponse<IUser[]>> {
         return $api.post('user/addFriend', {from: userId, to: friendId})
     }
-}
+
+    static getFriendListFromId(id: string): Promise<AxiosResponse<IUser[]>> {
+        return $api.post('user/getFriendListFromId', {id})
+    }
+ }
