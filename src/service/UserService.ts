@@ -3,6 +3,12 @@ import $api from "../http";
 import {AxiosResponse} from 'axios'
 import { IUser } from "../models/IUser";
 
+interface deleteFriendResponse {
+    status: boolean,
+    userId: string
+}
+
+
 export default class UserService {
     static fetchUsers(): Promise<AxiosResponse<IUser[]>> {
         return $api.get('user')
@@ -18,5 +24,12 @@ export default class UserService {
 
     static getFriendListFromId(id: string): Promise<AxiosResponse<IUser[]>> {
         return $api.post('user/getFriendListFromId', {id})
+    }
+
+    static deleteFriend(userId: string, friendId: string): Promise<AxiosResponse<deleteFriendResponse>> {
+        return $api.post('user/deleteFriend', {
+            userId,
+            friendId
+        })
     }
  }
