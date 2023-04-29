@@ -32,4 +32,11 @@ export default class UserService {
             friendId
         })
     }
+
+    static findFriendCandidatesForUserFromId(id: string, email: string) {
+        return $api.post('user/findFriendCandidatesForUserFromId', {
+            id,
+            email
+        })
+    }
  }

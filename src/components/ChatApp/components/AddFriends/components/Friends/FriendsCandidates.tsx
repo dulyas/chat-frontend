@@ -20,7 +20,7 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
     const getCandidatesList = async (searchString: string) => {
         setLoader(true)
 
-        const findedUsers = await UserService.findUsersByEmail(searchString)
+        const findedUsers = await UserService.findFriendCandidatesForUserFromId(store.user.id, searchString)
         setCandidates(findedUsers.data)
 
         setLoader(false)
