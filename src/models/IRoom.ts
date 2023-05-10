@@ -5,5 +5,5 @@ export interface IRoom {
     avatarUrl: string
     users: IFriend
     name: string
-    id: string
+    _id: string
 }

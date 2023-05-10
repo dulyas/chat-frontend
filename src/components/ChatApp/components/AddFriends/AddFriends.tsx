@@ -44,7 +44,7 @@ const AddFriends: FC = () => {
                     </div>
                     <div 
                     onClick={() => {
-                        setSearchString(input?.current?.value)
+                        setSearchString(input?.current?.value ?? '')
                     }}
                     className={style.right}>
                         <SearchBtn />

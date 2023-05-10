@@ -5,4 +5,5 @@ export interface IMessage {
     edited: boolean
     date: Date | number
     textMessage: string
+    _id: string
 }

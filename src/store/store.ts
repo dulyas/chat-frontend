@@ -1,3 +1,4 @@
+import { IChat } from './../models/IChat';
 import { API_URL } from './../http/index';
 import { AuthResponse } from './../models/response/AuthResponse';
 import axios from "axios";
@@ -214,7 +215,12 @@ export default class Store {
             }
         }
 
-        console.log(friends)
+        const chats: IChat[] = (await UserService.getAllUsersChats(user.id)).data
+
+        // console.log(friends)
+
+        console.log(chats);
+        
 
         this.user = {
             ...user,

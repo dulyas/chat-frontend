@@ -6,6 +6,7 @@ import { IUser } from "../../../../../../models/IUser";
 import { Context } from "../../../../../../main";
 
 import { observer } from "mobx-react-lite";
+import { IUserDto } from "../../../../../../models/IUserDto";
 
 interface FriendsProps {
     searchString: string
@@ -28,8 +29,11 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
 
     const addFriend = async (id: string): Promise<void> => {
         setLoader(true)
-        const contract = await UserService.addFriend(store.user.id, id)
-        console.log(contract)
+        const {user: addedFriend, conference} = (await UserService.addFriend(store.user.id, id)).data
+        
+        store.user.friends[id] = addedFriend
+        store.user.chats = [conference, ...store.user.chats]
+        setCandidates(prev => prev.filter(candidate => candidate.id !== id))
         setLoader(false)
     }
 
