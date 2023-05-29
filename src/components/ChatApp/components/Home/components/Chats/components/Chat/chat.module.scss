@@ -40,7 +40,16 @@
             line-height: 16px;
             color: #5C5C5C;
         }
-
+        .delete {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: red;
+            width: 20px;
+        }
     }
 
     .name {
