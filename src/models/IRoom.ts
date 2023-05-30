@@ -1,9 +1,10 @@
 import { IFriend } from "./IFriend"
-// import { IUser } from "./IUser"
+import { IUser } from "./IUser"
+import { IUserDto } from "./IUserDto"
 
 export interface IRoom {
     avatarUrl: string
-    users: IFriend
+    users: IUserDto[]
     name: string
     _id: string
 }

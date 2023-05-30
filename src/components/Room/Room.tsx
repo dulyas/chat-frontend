@@ -7,6 +7,7 @@ import RoomHeader from './components/RoomHeader/RoomHeader';
 import { IRoom } from '../../models/IRoom';
 import { useContext, useState } from 'react';
 import Messages from './components/Messages/Messages';
+import ChatService from '../../service/ChatService';
 
 interface RoomLoader {
     messagesData: IMessage[]
@@ -16,34 +17,68 @@ interface RoomLoader {
 export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLoader> {
     // const messages = await getContact(params.contactId);
 
+    // const conference = await 
+
     // console.log(params.roomId)
 
-    const roomData: IRoom = {
-        name: '',
-        id: '1',
-        // isOnline: true,
-        avatarUrl: '',
-        users: {
-            "642b003ebc8eea4eb5fc43e0": {
-                id: "642b003ebc8eea4eb5fc43e0",
-                name: "Sanya",
-                avatarUrl: '/images/ava1.png',
-                isOnline: false,
-                roomId: '1'
+    if (!params.roomId) return {
+        roomData: {
+                name: '',
+                _id: '1',
+                // isOnline: true,
+                avatarUrl: '',
+                users: [
+                    {
+                        id: "642b003ebc8eea4eb5fc43e0",
+                        name: "Sanya",
+                        avatarUrl: '/images/ava1.png',
+                        isOnline: false,
+                        roomId: '1'
+                    },
+                    {
+                        id: '123456',
+                        name: "Sanya2",
+                        avatarUrl: '/images/ava2.png',
+                        isOnline: true,
+                        roomId: '2'
+                    }
+                ]
             },
-            '123456': {
-                id: '123456',
-                name: "Sanya2",
-                avatarUrl: '/images/ava2.png',
-                isOnline: true,
-                roomId: '2'
-            }
-        }
+        messagesData: []
     }
+
+
+
+    const roomData = (await ChatService.getRoomDataById(params.roomId)).data
+
+    console.log(roomData)
+    // const roomData: IRoom = {
+    //     name: '',
+    //     _id: '1',
+    //     // isOnline: true,
+    //     avatarUrl: '',
+    //     users: [
+    //         {
+    //             id: "642b003ebc8eea4eb5fc43e0",
+    //             name: "Sanya",
+    //             avatarUrl: '/images/ava1.png',
+    //             isOnline: false,
+    //             roomId: '1'
+    //         },
+    //         {
+    //             id: '123456',
+    //             name: "Sanya2",
+    //             avatarUrl: '/images/ava2.png',
+    //             isOnline: true,
+    //             roomId: '2'
+    //         }
+    //     ]
+    // }
 
     const messagesData: IMessage[] = [
         {
             userId: "642b003ebc8eea4eb5fc43e0",
+            _id: 'ss1',
             roomId: '1',
             readed: true,
             edited: false,
@@ -52,6 +87,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         },
         {
             userId: '123456',
+            _id: 'ss2',
             roomId: '1',
             readed: false,
             edited: false,
@@ -61,6 +97,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: "642b003ebc8eea4eb5fc43e0",
             roomId: '1',
+            _id: 'ss3',
             readed: false,
             edited: false,
             date: Date.now() + 3,
@@ -70,6 +107,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
             userId: '123456',
             roomId: '1',
             readed: true,
+            _id: 'ss4',
             edited: true,
             date: Date.now() + 4,
             textMessage: '4'
@@ -78,6 +116,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
             userId: "642b003ebc8eea4eb5fc43e0",
             roomId: '1',
             readed: true,
+            _id: 'ss5',
             edited: false,
             date: Date.now() + 5,
             textMessage: '5'
@@ -86,6 +125,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
             userId: '123456',
             roomId: '1',
             readed: true,
+            _id: 'ss6',
             edited: false,
             date: Date.now() + 6,
             textMessage: '6'
@@ -93,6 +133,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: "642b003ebc8eea4eb5fc43e0",
             roomId: '1',
+            _id: 'ss7',
             readed: true,
             edited: false,
             date: Date.now() + 7,
@@ -101,6 +142,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: '123456',
             roomId: '1',
+            _id: 'ss8',
             readed: true,
             edited: false,
             date: Date.now() + 8,
@@ -109,6 +151,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: "642b003ebc8eea4eb5fc43e0",
             roomId: '1',
+            _id: 'ss9',
             readed: true,
             edited: false,
             date: Date.now() + 9,
@@ -117,6 +160,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: '123456',
             roomId: '1',
+            _id: 'ss120',
             readed: true,
             edited: false,
             date: Date.now() + 10,
@@ -125,6 +169,7 @@ export async function roomLoader({ params }: LoaderFunctionArgs): Promise<RoomLo
         {
             userId: "642b003ebc8eea4eb5fc43e0",
             roomId: '1',
+            _id: 'ss11',
             readed: true,
             edited: false,
             date: Date.now() + 11,
@@ -146,7 +191,7 @@ const Room = () => {
 
 
 
-    console.log(messages)
+    // console.log(messages)
     return (
         <div className={style.room}>
             <RoomHeader avatarUrl={room.avatarUrl} name={room.name} users={room.users}/>

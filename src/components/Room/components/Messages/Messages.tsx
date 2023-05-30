@@ -10,7 +10,7 @@ interface MessagesProps {
 const Messages: FC<MessagesProps> = ({messages}) => {
     return (
         <div className={style.messages}>
-            {messages.map(message => <Message message={message}/>)}
+            {messages.map(message => <Message key={message._id} message={message}/>)}
         </div>
     );
 };

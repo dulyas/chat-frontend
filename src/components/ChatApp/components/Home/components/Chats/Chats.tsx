@@ -1,6 +1,6 @@
 
 import { observer } from 'mobx-react-lite'
-import { useContext, FC } from 'react';
+import { useContext, FC, useEffect } from 'react';
 import { Context } from '../../../../../../main';
 import style from './chats.module.scss'
 import ChatElement from './components/Chat/ChatElement';
@@ -16,6 +16,7 @@ const Chats: FC<TabComponentProps> = ({searchString}) => {
     const deleteFunction = (id: string) => {
         store.user.chats = store.user.chats.filter(chat => chat._id !== id)
     }
+
 
 
     if (store?.user?.chats?.length) {
