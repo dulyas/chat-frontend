@@ -32,7 +32,12 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
         const {user: addedFriend, conference} = (await UserService.addFriend(store.user.id, id)).data
         
         store.user.friends[id] = addedFriend
-        store.user.chats = [conference, ...store.user.chats]
+
+        if (!store.user.chats.find(chat => chat._id === conference._id)) {
+            store.user.chats = [conference, ...store.user.chats]
+        }
+
+
         setCandidates(prev => prev.filter(candidate => candidate.id !== id))
         setLoader(false)
     }
