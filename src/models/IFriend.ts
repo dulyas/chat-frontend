@@ -4,6 +4,6 @@ export interface IFriend {
         name: string
         avatarUrl: string
         isOnline: boolean
-        roomId: string
+        // roomId: string
     }
 }

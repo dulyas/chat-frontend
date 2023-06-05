@@ -13,6 +13,8 @@ import { Context } from './main'
 import Room, { roomLoader } from './components/Room/Room';
 import { observer } from 'mobx-react-lite';
 
+import socketService from './service/SocketService';
+
 // import { lazy } from 'react';
 
 // import { IUser } from './models/IUser'
@@ -47,6 +49,8 @@ function App() {
 
   const isMobile = useCheckMobileScreen()
   const {store} = useContext(Context)
+
+
 
 
   const checkAuth = async (): Promise<void> => {

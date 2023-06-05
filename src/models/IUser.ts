@@ -9,5 +9,5 @@ export interface IUser {
     avatarUrl: string
     chats: IChat[]
     friends: IFriend
-    isOnline?: boolean
+    isOnline: boolean
 }

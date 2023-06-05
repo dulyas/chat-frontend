@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, MouseEvent, memo } from "react";
 import { IChat } from "../../../../../../../../models/IChat";
 import style from './chat.module.scss'
 import Ok from './ok.svg'

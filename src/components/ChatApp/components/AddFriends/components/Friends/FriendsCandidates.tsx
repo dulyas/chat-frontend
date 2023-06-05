@@ -6,7 +6,7 @@ import { IUser } from "../../../../../../models/IUser";
 import { Context } from "../../../../../../main";
 
 import { observer } from "mobx-react-lite";
-import { IUserDto } from "../../../../../../models/IUserDto";
+
 
 interface FriendsProps {
     searchString: string

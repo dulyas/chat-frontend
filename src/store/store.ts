@@ -1,4 +1,4 @@
-import { IChat } from './../models/IChat';
+
 import { API_URL } from './../http/index';
 import { AuthResponse } from './../models/response/AuthResponse';
 import axios from "axios";
@@ -8,6 +8,9 @@ import AuthService from "../service/AuthService";
 import { IChat } from '../models/IChat';
 import UserService from '../service/UserService';
 import { IFriend } from '../models/IFriend';
+import socketService from '../service/SocketService';
+import UserDto from '../models/IUserDto';
+
 
 const chats = [
     {
@@ -211,7 +214,6 @@ export default class Store {
                 name: friendsArr[key].name,
                 avatarUrl: friendsArr[key].avatarUrl,
                 isOnline: friendsArr[key].isOnline ?? true,
-                roomId: ''
             }
         }
 
@@ -219,8 +221,9 @@ export default class Store {
 
         // console.log(friends)
 
-        console.log(chats);
+        // console.log(chats);
         
+        socketService.connectUser(new UserDto(user))
 
         this.user = {
             ...user,
