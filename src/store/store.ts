@@ -204,25 +204,25 @@ export default class Store {
 
     async setUser(user: IUser) {
 
-        const friendsArr: IUser[] = (await UserService.getFriendListFromId(user.id)).data
+        const friendsArr: IUser[] = (await UserService.getFriendListFromId(user._id)).data
 
         const friends: IFriend = {}
 
         for (const key in friendsArr) {
-            friends[friendsArr[key].id] = {
-                id: friendsArr[key].id,
+            friends[friendsArr[key]._id] = {
+                _id: friendsArr[key]._id,
                 name: friendsArr[key].name,
                 avatarUrl: friendsArr[key].avatarUrl,
                 isOnline: friendsArr[key].isOnline ?? true,
             }
         }
 
-        const chats: IChat[] = (await UserService.getAllUsersChats(user.id)).data
+        const chats: IChat[] = (await UserService.getAllUsersChats(user._id)).data
 
         // console.log(friends)
 
         // console.log(chats);
-        
+
         socketService.connectUser(new UserDto(user))
 
         this.user = {
@@ -230,6 +230,8 @@ export default class Store {
             chats,
             friends
         }
+
+
     }
 
     async login(email: string, password: string) {
@@ -237,6 +239,9 @@ export default class Store {
             const response = await AuthService.login(email, password)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
+
+     
+
             await this.setUser(response.data.user)
 
         } catch (error: any) {

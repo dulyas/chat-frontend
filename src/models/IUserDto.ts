@@ -2,7 +2,7 @@ import { IUser } from "./IUser"
 
 
 export interface IUserDto {
-    id: string
+    _id: string
     name: string
     avatarUrl: string
     isOnline: boolean
@@ -12,7 +12,7 @@ export interface IUserDto {
 
 export default class UserDto {
     email
-    id
+    _id
     isActivated
     avatarUrl
     name
@@ -20,7 +20,7 @@ export default class UserDto {
 
     constructor(model: IUser) {
         this.email = model.email
-        this.id = model.id
+        this._id = model._id
         this.isActivated = model.isActivated
         this.avatarUrl = model.avatarUrl
         this.name = model.name

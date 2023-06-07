@@ -12,7 +12,7 @@ const Message: FC<MessageProps> = ({message}) => {
     const { store } = useContext(Context)
 
     return (
-        <div className={style.message + (store.user.id === message.userId ? ` ${style.my}` : '')}>
+        <div className={style.message + (store.user._id === message.userId ? ` ${style.my}` : '')}>
             {message.textMessage}
         </div>
     );

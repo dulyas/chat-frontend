@@ -21,7 +21,9 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
     const getCandidatesList = async (searchString: string) => {
         setLoader(true)
 
-        const findedUsers = await UserService.findFriendCandidatesForUserFromId(store.user.id, searchString)
+        const findedUsers = await UserService.findFriendCandidatesForUserFromId(store.user._id, searchString)
+
+        console.log(findedUsers)
         setCandidates(findedUsers.data)
 
         setLoader(false)
@@ -29,7 +31,7 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
 
     const addFriend = async (id: string): Promise<void> => {
         setLoader(true)
-        const {user: addedFriend, conference} = (await UserService.addFriend(store.user.id, id)).data
+        const {user: addedFriend, conference} = (await UserService.addFriend(store.user._id, id)).data
         
         store.user.friends[id] = addedFriend
 
@@ -38,7 +40,7 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
         }
 
 
-        setCandidates(prev => prev.filter(candidate => candidate.id !== id))
+        setCandidates(prev => prev.filter(candidate => candidate._id !== id))
         setLoader(false)
     }
 
@@ -59,8 +61,8 @@ const FriendsCandidates: FC<FriendsProps> = ({searchString}) => {
         return (
             <div className={style.friends}>
                 {candidates.map(candidate => 
-                    store.user.id !== candidate.id &&
-                    <Friend key={candidate.id} avatarUrl={candidate.avatarUrl} name={candidate.name ?? candidate.email} isOnline={candidate.isOnline ?? false} id={candidate.id} addFunction={addFriend}/>
+                    store.user._id !== candidate._id &&
+                    <Friend key={candidate._id} avatarUrl={candidate.avatarUrl} name={candidate.name ?? candidate.email} isOnline={candidate.isOnline ?? false} id={candidate._id} addFunction={addFriend}/>
                 )}
             </div>
         );

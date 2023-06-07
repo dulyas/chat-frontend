@@ -56,6 +56,8 @@ function App() {
   const checkAuth = async (): Promise<void> => {
     if (localStorage.getItem('token')) {
       await store.checkAuth()
+    } else {
+      store.setLoading(false)
     }
   }
 

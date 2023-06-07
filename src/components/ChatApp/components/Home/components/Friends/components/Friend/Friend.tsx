@@ -7,12 +7,11 @@ interface FriendProps {
     avatarUrl: string
     name: string
     isOnline: boolean
-    roomId: string
     id: string
     deleteFriend: (id: string) => void
 }
 
-const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, roomId, id, deleteFriend}) => {
+const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, id, deleteFriend}) => {
 
     const navigate = useNavigate()
 
@@ -29,8 +28,9 @@ const Friend: FC<FriendProps> = ({avatarUrl, name, isOnline, roomId, id, deleteF
             className={style.delete}>
                 DELETE
             </div>
+            {/* onClick={() => navigate(`/chat/${roomId}`)}  */}
             <div 
-            onClick={() => navigate(`/chat/${roomId}`)} 
+
             className={style.message}>
                 <MessageIcon />
             </div>

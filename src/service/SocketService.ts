@@ -8,9 +8,9 @@ import { IUserDto } from '../models/IUserDto'
 export const SOCKET_URL = 'ws://localhost:4422'
 
 class SocketService {
-    socket: Socket
+    _socket: Socket
     constructor() {
-        this.socket = io(SOCKET_URL, {
+        this._socket = io(SOCKET_URL, {
             path: '/socket.io/',
             // withCredentials: true,
             // transports: ['websocket', 'pooling']
@@ -18,8 +18,22 @@ class SocketService {
     }
 
     connectUser(user: IUserDto) {
-        this.socket.emit('connect-user', user)
+        this._socket.emit('connect-user', user)
+    }
+
+    connectRoom(roomId: string) {
+        this._socket.emit('connect-room', roomId)
+    }
+
+    get socket() {
+        return this._socket
+    }
+
+    sendMessage(roomId: string, userId: string, textMessage: string) {
+        this._socket.emit('new-message', roomId, userId, textMessage)
     }
 }
 
-export default new SocketService()
+const socketService = new SocketService() 
+
+export default socketService

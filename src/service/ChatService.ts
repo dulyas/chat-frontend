@@ -2,6 +2,7 @@ import { AuthResponse } from './../models/response/AuthResponse';
 import $api from "../http";
 import {AxiosResponse} from 'axios'
 import { IRoom } from '../models/IRoom';
+import { IMessage } from '../models/IMessage';
 
 
 interface DeleteResultResponse {
@@ -16,6 +17,7 @@ export default class ChatService {
     static async getRoomDataById(id: string): Promise<AxiosResponse<IRoom>> {
         return $api.post<IRoom>('/conference/getRoomDataById', {id})
     }
+
 
     // static async registration(email: string, password: string): Promise<AxiosResponse<AuthResponse>> {
     //     return $api.post<AuthResponse>('/user/registration', {email, password})

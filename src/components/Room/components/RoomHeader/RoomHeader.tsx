@@ -5,12 +5,13 @@ import BackIcon from './svg/back.svg'
 import { Context } from '../../../../main';
 import { IFriend } from '../../../../models/IFriend';
 import { useNavigate } from 'react-router-dom';
+import { IUserDto } from '../../../../models/IUserDto';
 
 
 interface RoomHeaderProps {
     avatarUrl: string
     name: string
-    users: IFriend
+    users: IUserDto[]
 }
 
 const calcRoomNameAndAvatar = (name: string, users: IFriend, avatarUrl: string, userId: string) : {

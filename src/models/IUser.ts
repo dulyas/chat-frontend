@@ -2,7 +2,7 @@ import { IChat } from "./IChat"
 import { IFriend } from "./IFriend"
 
 export interface IUser {
-    id: string
+    _id: string
     name: string
     email: string
     isActivated: boolean

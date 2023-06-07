@@ -23,7 +23,7 @@ const Chats: FC<TabComponentProps> = ({searchString}) => {
         return (
             <div className={style.chats}>
                 {store.user.chats.map(chat => 
-                    <ChatElement key={chat._id} chat={chat} userId={store.user.id} deleteFunction={deleteFunction} />
+                    <ChatElement key={chat._id} chat={chat} userId={store.user._id} deleteFunction={deleteFunction} />
                 )}
             </div>
         );

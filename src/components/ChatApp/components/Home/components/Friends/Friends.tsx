@@ -12,7 +12,7 @@ const Friends: FC<TabComponentProps> = ({searchString}) => {
     const {store} = useContext(Context)
 
     const deleteFriend = async (id: string) => {
-        const deleteResult = await UserService.deleteFriend(store.user.id, id)
+        const deleteResult = await UserService.deleteFriend(store.user._id, id)
         delete store.user.friends?.[deleteResult.data.userId]
     }
 
@@ -20,7 +20,7 @@ const Friends: FC<TabComponentProps> = ({searchString}) => {
         return (
             <div className={style.friends}>
                 {Object.values(store.user.friends).map(friend => 
-                    <Friend key={friend.id} avatarUrl={friend.avatarUrl} name={friend.name} isOnline={friend.isOnline} roomId={friend.roomId} id={friend.id} deleteFriend={deleteFriend}/>
+                    <Friend key={friend._id} avatarUrl={friend.avatarUrl} name={friend.name} isOnline={friend.isOnline} id={friend._id} deleteFriend={deleteFriend}/>
                 )}
             </div>
         );
