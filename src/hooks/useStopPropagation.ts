@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
 
-export default function(e: MouseEvent) {
-    e.stopPropagation()
+export default function (e: MouseEvent) {
+	e.stopPropagation();
 }

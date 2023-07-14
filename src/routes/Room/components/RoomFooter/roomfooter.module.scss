@@ -1,0 +1,52 @@
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 113px;
+	background: #f8f8f8;
+	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 18px 18px 0 0;
+	padding: 26px 55px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	input {
+		padding: 0;
+		display: block;
+		background: none;
+		border: none;
+		outline: none;
+		font-weight: 400;
+		font-size: 17px;
+		line-height: 22px;
+		color: #8d8d8d;
+		&:focus {
+			background: none;
+			border: none;
+			outline: none;
+		}
+	}
+
+	.icons {
+		.icon {
+			width: 25px;
+			height: 25px;
+
+			svg {
+				width: 100%;
+				height: 100%;
+				path {
+					transition: 0.3s;
+				}
+			}
+			&:active {
+				svg path {
+					fill: #771f98;
+				}
+			}
+		}
+	}
+}

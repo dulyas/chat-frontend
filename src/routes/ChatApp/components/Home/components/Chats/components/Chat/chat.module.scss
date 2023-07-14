@@ -1,0 +1,92 @@
+.chat {
+	position: relative;
+	border: 2px solid #771f98;
+	border-radius: 14px;
+	padding: 9px 17px;
+	display: flex;
+	align-items: center;
+	height: 68px;
+	overflow: hidden;
+	width: 100%;
+	&:not(:first-child) {
+		margin-block-start: 32px;
+	}
+
+	.left {
+		height: 100%;
+		width: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 auto;
+		img {
+			width: 50px;
+			height: 50px;
+		}
+	}
+
+	.right {
+		margin-inline-start: 13px;
+		height: 100%;
+		position: relative;
+		flex: 1 1 auto;
+		overflow: hidden;
+		.date {
+			position: absolute;
+			inset-inline-end: 0;
+			inset-block-start: 0;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: 16px;
+			color: #5c5c5c;
+		}
+		.delete {
+			position: absolute;
+			right: 0;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: red;
+			width: 20px;
+		}
+	}
+
+	.name {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 24px;
+		color: #181818;
+	}
+	.message {
+		margin-block-start: 6px;
+
+		font-weight: 400;
+		font-size: 13px;
+		white-space: nowrap;
+		line-height: 20px;
+		display: flex;
+		align-items: center;
+		// width: 100%;
+
+		&.readed {
+			svg path {
+				fill: #7ebd4c;
+			}
+		}
+
+		svg {
+			width: 15px;
+			height: 15px;
+			display: block;
+			margin-inline-end: 2px;
+			flex-shrink: 0;
+		}
+		.lastmessage {
+			flex-grow: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 100%;
+		}
+	}
+}
