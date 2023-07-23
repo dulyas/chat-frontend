@@ -3,7 +3,7 @@ import { IChat } from "../../../../../../../../models/IChat";
 import style from "./chat.module.scss";
 import Ok from "./ok.svg";
 import { useNavigate } from "react-router-dom";
-import ChatService from "../../../../../../../../service/ChatService";
+import ChatService from "../../../../../../../../services/ChatService";
 
 interface ChatElementProps {
 	chat: IChat;
@@ -35,7 +35,7 @@ const ChatElement: FC<ChatElementProps> = ({
 				<img src={chat.avatarUrl} alt="avatar" />
 			</div>
 			<div className={style.right}>
-				<div className={style.name}>{chat.name}</div>
+				<div className={style.name}>{chat.name ?? chat._id}</div>
 				{chat.lastMessage && (
 					<>
 						<div

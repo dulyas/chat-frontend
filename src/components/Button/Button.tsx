@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import style from "./button.module.scss";
+import { MouseEventHandler } from "react";
 
 interface ButtonProps {
 	text: string;
-	click: (() => void) | string;
+	click: ((event: MouseEvent) => void) | string;
 }
 
 const Button: FC<ButtonProps> = ({ text, click }) => {

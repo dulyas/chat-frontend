@@ -1,7 +1,8 @@
 import axios from "axios";
-import { AuthResponse } from "../models/response/AuthResponse";
+import { AuthResponse } from "@/models/response/AuthResponse";
 
-export const API_URL = "http://localhost:4422/api";
+// export const API_URL = "http://localhost:4422/api";
+export const API_URL = "http://dulyas.fun/chat-back";
 
 const $api = axios.create({
 	withCredentials: true,

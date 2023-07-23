@@ -1,5 +1,5 @@
-import { IChat } from "./IChat";
-import { IFriend } from "./IFriend";
+import { IChat } from "@/models/IChat";
+import { IFriend } from "@/models/IFriend";
 
 export interface IUser {
 	_id: string;

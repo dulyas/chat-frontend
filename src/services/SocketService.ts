@@ -1,8 +1,9 @@
 import io, { Socket } from "socket.io-client";
-import { IUser } from "../models/IUser";
-import { IUserDto } from "../models/IUserDto";
+import { IUser } from "@/models/IUser";
+import { IUserDto } from "@/models/IUserDto";
 
-export const SOCKET_URL = "ws://localhost:4422";
+// export const SOCKET_URL = "ws://localhost:4422";
+export const SOCKET_URL = "ws://dulyas.fun";
 
 class SocketService {
 	_socket: Socket;
@@ -10,7 +11,7 @@ class SocketService {
 		this._socket = io(SOCKET_URL, {
 			path: "/socket.io/",
 			// withCredentials: true,
-			// transports: ['websocket', 'pooling']
+			transports: ["websocket"],
 		});
 	}
 

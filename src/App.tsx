@@ -1,16 +1,16 @@
-import "./App.css";
-import useCheckMobileScreen from "./hooks/useMobileCheckScreen";
+import "@/App.css";
+import useCheckMobileScreen from "@/hooks/useMobileCheckScreen";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Login from "./routes/Login/Login";
-import MainPage from "./routes/MainPage/MainPage";
-import ChatApp from "./routes/ChatApp/ChatApp";
+import Login from "@/routes/Login/Login";
+import MainPage from "@/routes/MainPage/MainPage";
+import ChatApp from "@/routes/ChatApp/ChatApp";
 import { useContext, useEffect } from "react";
-import { Context } from "./main";
-import Room, { roomLoader } from "./routes/Room/Room";
+import { Context } from "@/main";
+import Room, { roomLoader } from "@/routes/Room/Room";
 import { observer } from "mobx-react-lite";
 
-import socketService from "./service/SocketService";
+import socketService from "@/services/SocketService";
 
 // import { lazy } from 'react';
 

@@ -2,8 +2,8 @@ import { FC, useEffect } from "react";
 import style from "./mainPage.module.scss";
 import peoples from "./peoples.png";
 import ProgressLogo from "./progress.svg";
-import Button from "../../components/Button/Button";
-import { Context } from "../../main";
+import Button from "@/components/Button/Button";
+import { Context } from "@/main";
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 

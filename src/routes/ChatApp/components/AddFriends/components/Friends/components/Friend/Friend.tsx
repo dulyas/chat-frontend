@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import style from "./friend.module.scss";
 import MessageIcon from "./message.svg";
 
@@ -17,6 +17,7 @@ const Friend: FC<FriendProps> = ({
 	id,
 	addFunction,
 }) => {
+
 	return (
 		<div className={style.friend}>
 			<div className={style.avatar}>

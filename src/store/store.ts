@@ -1,14 +1,14 @@
-import { API_URL } from "./../http/index";
-import { AuthResponse } from "./../models/response/AuthResponse";
+import { API_URL } from "@/http/index";
+import { AuthResponse } from "@/models/response/AuthResponse";
 import axios from "axios";
-import { IUser } from "../models/IUser";
-import { action, makeAutoObservable, makeObservable, observable } from "mobx";
-import AuthService from "../service/AuthService";
-import { IChat } from "../models/IChat";
-import UserService from "../service/UserService";
-import { IFriend } from "../models/IFriend";
-import socketService from "../service/SocketService";
-import UserDto from "../models/IUserDto";
+import { IUser } from "@/models/IUser";
+import { action, makeObservable, observable } from "mobx";
+import AuthService from "@/services/AuthService";
+import { IChat } from "@/models/IChat";
+import UserService from "@/services/UserService";
+import { IFriend } from "@/models/IFriend";
+import socketService from "@/services/SocketService";
+import UserDto from "@/models/IUserDto";
 
 const chats = [
 	{
@@ -214,6 +214,7 @@ export default class Store {
 				name: friendsArr[key].name,
 				avatarUrl: friendsArr[key].avatarUrl,
 				isOnline: friendsArr[key].isOnline ?? true,
+				email: friendsArr[key].email
 			};
 		}
 
@@ -238,7 +239,6 @@ export default class Store {
 			const response = await AuthService.login(email, password);
 			localStorage.setItem("token", response.data.accessToken);
 			this.setAuth(true);
-
 			await this.setUser(response.data.user);
 		} catch (error: any) {
 			console.log(error.response?.data?.message || error);
@@ -256,9 +256,9 @@ export default class Store {
 		}
 	}
 
-	async logout(email: string) {
+	async logout() {
 		try {
-			const response = await AuthService.logout(email);
+			const response = await AuthService.logout();
 			localStorage.removeItem("token");
 			this.setAuth(false);
 			this.setUser({} as IUser);
@@ -276,6 +276,7 @@ export default class Store {
 			);
 			localStorage.setItem("token", response.data.accessToken);
 			this.setAuth(true);
+
 			await this.setUser(response.data.user);
 		} catch (error: any) {
 			console.log(error.response?.data?.message || error);

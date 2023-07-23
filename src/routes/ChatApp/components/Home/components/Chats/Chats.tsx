@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useContext, FC, useEffect } from "react";
+import { useContext, FC, useEffect, useCallback } from "react";
 import { Context } from "../../../../../../main";
 import style from "./chats.module.scss";
 import ChatElement from "./components/Chat/ChatElement";
@@ -8,9 +8,9 @@ import { TabComponentProps } from "../../Home";
 const Chats: FC<TabComponentProps> = ({ searchString }) => {
 	const { store } = useContext(Context);
 
-	const deleteFunction = (id: string) => {
+	const deleteFunction = useCallback((id: string) => {
 		store.user.chats = store.user.chats.filter((chat) => chat._id !== id);
-	};
+	}, []);
 
 	if (store?.user?.chats?.length) {
 		return (
@@ -26,7 +26,7 @@ const Chats: FC<TabComponentProps> = ({ searchString }) => {
 			</div>
 		);
 	}
-	return <div>There no chats, try to chat friends!</div>;
+	return <div>There is no chats, try to chat friends!</div>;
 };
 
 export default observer(Chats);

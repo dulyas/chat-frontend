@@ -1,8 +1,8 @@
-import $api from "../http";
+import $api from "@/http";
 import { AxiosResponse } from "axios";
-import { IUser } from "../models/IUser";
-import { IUserDto } from "../models/IUserDto";
-import { IChat } from "../models/IChat";
+import { IUser } from "@/models/IUser";
+import { IUserDto } from "@/models/IUserDto";
+import { IChat } from "@/models/IChat";
 
 interface DeleteFriendResponse {
 	status: boolean;

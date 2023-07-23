@@ -1,8 +1,8 @@
-import { AuthResponse } from "./../models/response/AuthResponse";
-import $api from "../http";
+import { AuthResponse } from "@/models/response/AuthResponse";
+import $api from "@/http";
 import { AxiosResponse } from "axios";
-import { IRoom } from "../models/IRoom";
-import { IMessage } from "../models/IMessage";
+import { IRoom } from "@/models/IRoom";
+import { IMessage } from "@/models/IMessage";
 
 interface DeleteResultResponse {
 	deleteResult: boolean;

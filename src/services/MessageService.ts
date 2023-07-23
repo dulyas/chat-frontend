@@ -1,6 +1,6 @@
-import $api from "../http";
+import $api from "@/http";
 import { AxiosResponse } from "axios";
-import { IMessage } from "../models/IMessage";
+import { IMessage } from "@/models/IMessage";
 
 export default class MessageService {
 	static async getMessagesForConferenceFromId(

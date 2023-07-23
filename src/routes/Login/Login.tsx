@@ -1,20 +1,28 @@
 import { FC } from "react";
 import sitting from "./sitting-woman.png";
 import Back from "./back.svg";
-import Button from "../../components/Button/Button";
+import Button from "@/components/Button/Button";
 import style from "./login.module.scss";
 import { useState, useContext } from "react";
-import { Context } from "../../main";
+import { Context } from "@/main";
 import { observer } from "mobx-react-lite";
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login: FC = () => {
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const { store } = useContext(Context);
+	const navigate = useNavigate();
 
 	const login = async (): Promise<void> => {
 		await store.login(email, password);
+		navigate("/chat");
+	};
+
+	const registration = async (): Promise<void> => {
+		await store.registration(email, password);
+		navigate("/chat");
 	};
 
 	if (store.isAuth) {
@@ -64,10 +72,7 @@ const Login: FC = () => {
 						<Button text="Login" click={login} />
 					</div>
 					<div className={style.button}>
-						<Button
-							text="Register"
-							click={() => store.registration(email, password)}
-						/>
+						<Button text="Register" click={registration} />
 					</div>
 				</div>
 			</div>

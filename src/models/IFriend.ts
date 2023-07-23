@@ -4,6 +4,7 @@ export interface IFriend {
 		name: string;
 		avatarUrl: string;
 		isOnline: boolean;
+		email: string;
 		// roomId: string
 	};
 }

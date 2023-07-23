@@ -1,5 +1,5 @@
-import { FC, useMemo } from "react";
-import { Tab } from "../../ChatApp";
+import { FC } from "react";
+import { Tab } from "@/routes/ChatApp/ChatApp";
 import style from "./footer.module.scss";
 
 interface FooterProps {

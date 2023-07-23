@@ -1,15 +1,15 @@
 import style from "./room.module.scss";
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
-import { IMessage } from "../../models/IMessage";
+import { IMessage } from "@/models/IMessage";
 import RoomFooter from "./components/RoomFooter/RoomFooter";
 import RoomHeader from "./components/RoomHeader/RoomHeader";
-import { IRoom } from "../../models/IRoom";
+import { IRoom } from "@/models/IRoom";
 import { useContext, useEffect, useState } from "react";
 import Messages from "./components/Messages/Messages";
-import ChatService from "../../service/ChatService";
-import MessageService from "../../service/MessageService";
-import socketService from "../../service/SocketService";
-import { Context } from "../../main";
+import ChatService from "@/services/ChatService";
+import MessageService from "@/services/MessageService";
+import socketService from "@/services/SocketService";
+import { Context } from "@/main";
 
 interface RoomLoader {
 	messagesData: IMessage[];

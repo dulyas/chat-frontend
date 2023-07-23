@@ -1,9 +1,9 @@
-import { FC, memo, useContext, useEffect, useState } from "react";
+import { FC, memo, useContext, useEffect, useState, useCallback } from "react";
 import style from "./friends.module.scss";
 import Friend from "./components/Friend/Friend";
-import UserService from "../../../../../../service/UserService";
-import { IUser } from "../../../../../../models/IUser";
-import { Context } from "../../../../../../main";
+import UserService from "@/services/UserService";
+import { IUser } from "@/models/IUser";
+import { Context } from "@/main";
 
 import { observer } from "mobx-react-lite";
 
@@ -30,7 +30,7 @@ const FriendsCandidates: FC<FriendsProps> = ({ searchString }) => {
 		setLoader(false);
 	};
 
-	const addFriend = async (id: string): Promise<void> => {
+	const addFriend = useCallback(async (id: string): Promise<void> => {
 		setLoader(true);
 		const { user: addedFriend, conference } = (
 			await UserService.addFriend(store.user._id, id)
@@ -46,7 +46,7 @@ const FriendsCandidates: FC<FriendsProps> = ({ searchString }) => {
 			prev.filter((candidate) => candidate._id !== id),
 		);
 		setLoader(false);
-	};
+	}, []);
 
 	useEffect(() => {
 		searchString && getCandidatesList(searchString);

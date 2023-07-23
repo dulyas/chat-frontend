@@ -1,14 +1,13 @@
-import { FC, useContext } from "react";
-import { Context } from "../../../../../../main";
+import { FC, useContext, useCallback } from "react";
+import { Context } from "@/main";
 import { observer } from "mobx-react-lite";
 import style from "./friends.module.scss";
 import Friend from "./components/Friend/Friend";
 import { TabComponentProps } from "../../Home";
-import UserService from "../../../../../../service/UserService";
+import UserService from "@/services/UserService";
 
 const Friends: FC<TabComponentProps> = ({ searchString }) => {
 	const { store } = useContext(Context);
-
 	const deleteFriend = async (id: string) => {
 		const deleteResult = await UserService.deleteFriend(store.user._id, id);
 		delete store.user.friends?.[deleteResult.data.userId];
@@ -21,7 +20,7 @@ const Friends: FC<TabComponentProps> = ({ searchString }) => {
 					<Friend
 						key={friend._id}
 						avatarUrl={friend.avatarUrl}
-						name={friend.name}
+						name={friend.name ?? friend.email}
 						isOnline={friend.isOnline}
 						id={friend._id}
 						deleteFriend={deleteFriend}
